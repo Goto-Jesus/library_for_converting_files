@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Car>
+    <Date>27.07.2023</Date>
+    <BrandName>Lada</BrandName>
+    <Price>9999999</Price>
+  </Car>
+  <Car>
+    <Date>27.07.2023</Date>
+    <BrandName>Ford</BrandName>
+    <Price>100000</Price>
+  </Car>
+</Document>
