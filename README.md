@@ -55,5 +55,6 @@ Of course, you can modify the file using the following methods: add, delete, and
 And you can (read, write) files with the formats you implemented!
 
 ## Video Demostration my Project
+Check it out for sure!!!
 
-	* [Video](https://www.loom.com/share/ce712488f7f74c14ac2597768f04b1f0)
+[Video](https://www.loom.com/share/ce712488f7f74c14ac2597768f04b1f0)
