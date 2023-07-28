@@ -2,7 +2,6 @@ import { FileFormater } from '../FileFormater';
 import { Format } from '../types/Format';
 import { Car } from '../classes/Car';
 import xml2js from 'xml2js';
-// import { format } from 'date-fns';
 
 interface CarXML {
 	Date: string[];
@@ -11,8 +10,8 @@ interface CarXML {
 }
 
 export class XmlFormater extends FileFormater {
-	protected toObject(binaryData: Buffer): Format {
-		const data = binaryData.toString('utf-8');
+	protected toObject(bufferData: Buffer): Format {
+		const data = bufferData.toString('utf-8');
 		const result: Format = { Document: { Car: [] } };
 
 		xml2js.parseString(data, (err, object) => {
@@ -64,4 +63,4 @@ export class XmlFormater extends FileFormater {
 	}
 }
 
-FileFormater.addFormat('xml', XmlFormater, new XmlFormater());
+FileFormater.addFormat('.xml', XmlFormater, new XmlFormater());

@@ -2,8 +2,8 @@ import { FileFormater } from '../FileFormater';
 import { Format } from '../types/Format';
 
 export class ExampleFormater extends FileFormater {
-	protected toObject(binaryData: Buffer): Format {
-		console.log(binaryData);
+	protected toObject(bufferData: Buffer): Format {
+		console.log(bufferData);
 
 		return { Document: { Car: [] } };
 	}
@@ -15,4 +15,4 @@ export class ExampleFormater extends FileFormater {
 	}
 }
 
-FileFormater.addFormat('example', ExampleFormater, new ExampleFormater());	// <--- Necessarily!!!
+FileFormater.addFormat('.example', ExampleFormater, new ExampleFormater());	// <--- Necessarily!!!
