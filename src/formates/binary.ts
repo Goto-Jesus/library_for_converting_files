@@ -3,32 +3,32 @@ import { Format } from '../types/Format';
 import { Car } from '../classes/Car';
 
 export class BinaryFormater extends FileFormater {
-	protected toObject(binaryData: Buffer): Format {
+	protected toObject(bufferData: Buffer): Format {
 		// const header = binaryData.slice(0, 2);
-		const carCount = binaryData.readUInt32LE(2);
+		const carCount = bufferData.readUInt32LE(2);
 		const cars: Car[] = [];
 
 		let offset = 6; // Start reading after header and carCount (2 + 4)
 
 		for (let i = 0; i < carCount; i++) {
 			const date = new Date();
-			date.setDate(binaryData.readUInt16LE(offset)); // DD
-			date.setMonth(binaryData.readUInt16LE(offset + 2) - 1); // MM (Note: Months are zero-indexed in JavaScript)
-			date.setFullYear(binaryData.readUInt32LE(offset + 4)); // YYYY
+			date.setDate(bufferData.readUInt16LE(offset)); // DD
+			date.setMonth(bufferData.readUInt16LE(offset + 2) - 1); // MM (Note: Months are zero-indexed in JavaScript)
+			date.setFullYear(bufferData.readUInt32LE(offset + 4)); // YYYY
 
 			offset += 8; // Move to the next car field
 
-			const brandNameLength = binaryData.readUInt16LE(offset);
+			const brandNameLength = bufferData.readUInt16LE(offset);
 			offset += 2; // Move to the brandName field
 
-			const brandName = binaryData.toString(
+			const brandName = bufferData.toString(
 				'utf16le',
 				offset,
 				offset + brandNameLength * 2,
 			);
 			offset += brandNameLength * 2; // Move to the next car field
 
-			const price = binaryData.readInt32LE(offset);
+			const price = bufferData.readInt32LE(offset);
 			offset += 4; // Move to the next car field
 
 			// Create the car object and add it to the cars array
@@ -82,4 +82,4 @@ export class BinaryFormater extends FileFormater {
 	}
 }
 
-FileFormater.addFormat('bin', BinaryFormater, new BinaryFormater());
+FileFormater.addFormat('.bin', BinaryFormater, new BinaryFormater());
